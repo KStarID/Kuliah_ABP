@@ -28,6 +28,18 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  final data = const [
+    {"tgl": "02/03/2022", "nilai": "150"},
+    {"tgl": "01/02/2022", "nilai": "140"},
+    {"tgl": "12/01/2022", "nilai": "170"},
+    {"tgl": "11/12/2022", "nilai": "110"},
+    {"tgl": "10/11/2022", "nilai": "180"},
+    {"tgl": "09/10/2022", "nilai": "190"},
+    {"tgl": "08/09/2022", "nilai": "160"},
+    {"tgl": "07/08/2022", "nilai": "155"},
+    {"tgl": "06/07/2022", "nilai": "145"},
+    {"tgl": "05/06/2022", "nilai": "140"},
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,6 +162,37 @@ class _MyHomePageState extends State<MyHomePage> {
                       letterSpacing: 0.25),
                 ),
               ),
+              Container(
+                height: 300,
+                child: ListView.builder(
+                    itemCount: data.length,
+                    itemBuilder: (context, index) {
+                      return Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const Text(
+                                "Tanggal tes:\nNilai:",
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              Text(
+                                '${data[index]["tgl"]!}\n${data[index]["nilai"]!}',
+                                style: const TextStyle(
+                                    color: Colors.blue, fontSize: 20),
+                              )
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                        ],
+                      );
+                    }),
+              )
             ],
           ),
         ),
